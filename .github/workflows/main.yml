@@ -19,7 +19,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd DevOps-WebApp-X/blog/
+          cd /blog
           npm install
         working-directory: DevOps-WebApp-X/blog/
 
