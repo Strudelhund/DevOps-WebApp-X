@@ -19,15 +19,15 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd /blog
+          cd blog
           npm install
-        working-directory: DevOps-WebApp-X/blog/
+        working-directory: /blog
 
       - name: Lint code
         run: |
-          cd DevOps-WebApp-X/blog/web-app
+          cd blog
           npm run lint
-        working-directory: DevOps-WebApp-X/blog/
+        working-directory: /blog
 
   build:
     name: Build
@@ -39,12 +39,12 @@ jobs:
 
       - name: Build and Containerize
         run: |
-          cd DevOps-WebApp-X/blog/
+          cd blog
           npm install
           npm run build
           cd ../..
           docker build -t Dockerfile .
-        working-directory: DevOps-WebApp-X/blog
+        working-directory: /blog
 
   audit:
     name: Audit
@@ -57,12 +57,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd DevOps-WebApp-X/blog/web-app
+          cd blog
           npm install
-        working-directory: DevOps-WebApp-X/blog/
+        working-directory: /blog
 
       - name: Audit dependencies
         run: |
-          cd DevOps-WebApp-X/blog/
+          cd blog
           npm audit
-        working-directory: DevOps-WebApp-X/blog/
+        working-directory: /blog
