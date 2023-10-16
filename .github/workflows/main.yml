@@ -19,6 +19,7 @@ jobs:
 
       - name: Install dependencies
         run: |
+          ls
           cd blog
           npm install
         working-directory: ./blog
