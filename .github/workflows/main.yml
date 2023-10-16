@@ -19,14 +19,11 @@ jobs:
 
       - name: Install dependencies
         run: |
-          ls
-          cd blog
           npm install
         working-directory: ./blog
 
       - name: Lint code
         run: |
-          cd blog
           npm run lint
         working-directory: ./blog
 
@@ -40,11 +37,10 @@ jobs:
 
       - name: Build and Containerize
         run: |
-          cd blog
           npm install
           npm run build
           cd ..
-          docker build -t Dockerfile .
+          docker build -t -p 3000 Dockerfile .
         working-directory: ./blog
 
   audit:
@@ -58,12 +54,10 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd blog
           npm install
         working-directory: ./blog
 
       - name: Audit dependencies
         run: |
-          cd blog
           npm audit
         working-directory: ./blog
