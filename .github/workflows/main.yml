@@ -24,10 +24,9 @@ jobs:
 
       - name: Install dependencies and lint code
         run: |
-          cd blog
-          npm install
-          npm run lint
-        working-directory: ./DevOps-WebApp-X/blog
+          npm install --prefix ./DevOps-WebApp-X/blog
+          npm run lint --prefix ./DevOps-WebApp-X/blog
+        working-directory: /home/runner/work/DevOps-WebApp-X/blog
 
   build:
     name: Build
@@ -44,10 +43,9 @@ jobs:
 
       - name: Install dependencies and build
         run: |
-          cd blog
-          npm install
-          npm run build
-        working-directory: ./DevOps-WebApp-X/blog
+          npm install --prefix ./DevOps-WebApp-X/blog
+          npm run build --prefix ./DevOps-WebApp-X/blog
+        working-directory: /home/runner/work/DevOps-WebApp-X/blog
 
   audit:
     name: Audit
@@ -65,7 +63,6 @@ jobs:
 
       - name: Install dependencies and audit
         run: |
-          cd blog
-          npm install
-          npm audit
-        working-directory: ./DevOps-WebApp-X/blog
+          npm install --prefix ./DevOps-WebApp-X/blog
+          npm audit --prefix ./DevOps-WebApp-X/blog
+        working-directory: /home/runner/work/DevOps-WebApp-X/blog
