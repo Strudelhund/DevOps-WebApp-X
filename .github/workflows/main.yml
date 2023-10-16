@@ -19,15 +19,15 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd DEVOPS-WEBAPP-X
+          cd DevOps-WebApp-X/blog/
           npm install
-        working-directory: ./blog
+        working-directory: DevOps-WebApp-X/blog/
 
       - name: Lint code
         run: |
-          cd DEVOPS-WEBAPP-X
+          cd DevOps-WebApp-X/blog/web-app
           npm run lint
-        working-directory: ./blog
+        working-directory: DevOps-WebApp-X/blog/
 
   build:
     name: Build
@@ -39,12 +39,12 @@ jobs:
 
       - name: Build and Containerize
         run: |
-          cd DEVOPS-WEBAPP-X/blog
+          cd DevOps-WebApp-X/blog/
           npm install
           npm run build
-          cd ..
+          cd ../..
           docker build -t Dockerfile .
-        working-directory: ./DEVOPS-WEBAPP-X/blog
+        working-directory: DevOps-WebApp-X/blog
 
   audit:
     name: Audit
@@ -57,12 +57,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd DEVOPS-WEBAPP-X/blog
+          cd DevOps-WebApp-X/blog/web-app
           npm install
-        working-directory: ./DEVOPS-WEBAPP-X/blog
+        working-directory: DevOps-WebApp-X/blog/
 
       - name: Audit dependencies
         run: |
-          cd DEVOPS-WEBAPP-X/blog
+          cd DevOps-WebApp-X/blog/
           npm audit
-        working-directory: ./DEVOPS-WEBAPP-X/blog
+        working-directory: DevOps-WebApp-X/blog/
