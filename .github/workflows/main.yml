@@ -19,15 +19,15 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd DEVOPS-WEBAPP-X/blog
+          cd DEVOPS-WEBAPP-X
           npm install
-        working-directory: ./DEVOPS-WEBAPP-X/blog
+        working-directory: ./blog
 
       - name: Lint code
         run: |
-          cd DEVOPS-WEBAPP-X/blog
+          cd DEVOPS-WEBAPP-X
           npm run lint
-        working-directory: ./DEVOPS-WEBAPP-X/blog
+        working-directory: ./blog
 
   build:
     name: Build
