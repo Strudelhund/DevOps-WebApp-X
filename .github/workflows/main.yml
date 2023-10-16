@@ -17,16 +17,17 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
-
-      - name: Install dependencies and lint code
+      - name: Install dependencies
         run: |
-          npm install --prefix ./DevOps-WebApp-X/blog
-          npm run lint --prefix ./DevOps-WebApp-X/blog
-        working-directory: /home/runner/work/DevOps-WebApp-X/blog
+          cd blog
+          npm install
+        working-directory: ./blog
+
+      - name: Lint code
+        run: |
+          cd blog
+          npm run lint
+        working-directory: ./blog
 
   build:
     name: Build
@@ -36,16 +37,14 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
-
-      - name: Install dependencies and build
+      - name: Build and Containerize
         run: |
-          npm install --prefix ./DevOps-WebApp-X/blog
-          npm run build --prefix ./DevOps-WebApp-X/blog
-        working-directory: /home/runner/work/DevOps-WebApp-X/blog
+          cd blog
+          npm install
+          npm run build
+          cd ..
+          docker build -t Dockerfile .
+        working-directory: ./blog
 
   audit:
     name: Audit
@@ -56,13 +55,14 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
-
-      - name: Install dependencies and audit
+      - name: Install dependencies
         run: |
-          npm install --prefix ./DevOps-WebApp-X/blog
-          npm audit --prefix ./DevOps-WebApp-X/blog
-        working-directory: /home/runner/work/DevOps-WebApp-X/blog
+          cd blog
+          npm install
+        working-directory: ./blog
+
+      - name: Audit dependencies
+        run: |
+          cd blog
+          npm audit
+        working-directory: ./blog
