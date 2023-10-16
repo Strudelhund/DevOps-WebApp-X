@@ -1,0 +1,68 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          cd web-app
+          npm install
+        working-directory: ./web-app
+
+      - name: Lint code
+        run: |
+          cd web-app
+          npm run lint
+        working-directory: ./web-app
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Build and Containerize
+        run: |
+          cd web-app
+          npm install
+          npm run build
+          cd ..
+          docker build -t Dockerfile .
+        working-directory: ./web-app
+
+  audit:
+    name: Audit
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/release')
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          cd web-app
+          npm install
+        working-directory: ./web-app
+
+      - name: Audit dependencies
+        run: |
+          cd web-app
+          npm audit
+        working-directory: ./web-app
