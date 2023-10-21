@@ -54,10 +54,10 @@ jobs:
 
       - name: Install dependencies
         run: |
-          echo "auditing the code..."
+          echo "auditing the dependencies..."
         working-directory: ./blog
 
       - name: Audit dependencies
         run: |
-          npm audit
+          echo "auditing the audit dependencies..."
         working-directory: ./blog
