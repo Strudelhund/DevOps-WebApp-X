@@ -39,7 +39,11 @@ jobs:
         run: |
           npm install
           npm run build
+          echo "after npm build"
+          ls
           cd ..
+          echo "after cd.."
+          ls
           docker build -t dockerfile:latest .
         working-directory: ./blog
 
