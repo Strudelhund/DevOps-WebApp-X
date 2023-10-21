@@ -40,7 +40,7 @@ jobs:
           npm install
           npm run build
           cd ..
-          docker build -t Dockerfile .
+          docker build -t Dockerfile:latest .
         working-directory: ./blog
 
   audit:
