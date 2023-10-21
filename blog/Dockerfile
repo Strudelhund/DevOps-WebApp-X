@@ -11,7 +11,7 @@ COPY ./web-app/package.json ./web-app/package-lock.json ./web-app/
 RUN cd ./web-app && npm install
 
 # Copy the rest of the application files to the container
-COPY ./web-app/ ./web-app/
+#COPY ./web-app/ ./web-app/
 
 # Build the Next.js application
 RUN cd ./web-app && npm run build
