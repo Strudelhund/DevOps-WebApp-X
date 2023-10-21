@@ -58,6 +58,8 @@ jobs:
           echo "auditing the dependencies..."
           echo "creating a lock file..."
           npm i --package-lock-only
+          echo "running npm install..."
+          npm install
           echo "running npm audit..."
           npm audit
           echo "running npm outdated..."
