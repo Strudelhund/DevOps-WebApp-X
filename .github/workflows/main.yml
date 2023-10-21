@@ -24,7 +24,7 @@ jobs:
 
       - name: Lint code
         run: |
-          echo"Linting the code..."
+          echo "Linting the code..."
         working-directory: ./blog
 
   build:
@@ -54,7 +54,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          echo"auditing the code..."
+          echo "auditing the code..."
         working-directory: ./blog
 
       - name: Audit dependencies
