@@ -41,7 +41,6 @@ jobs:
           npm run build
           echo "after npm build"
           ls
-          cd ..
           docker build -t dockerfile:latest .
         working-directory: ./blog
 
