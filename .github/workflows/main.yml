@@ -65,8 +65,6 @@ jobs:
           npm i --package-lock-only
           echo "Running npm audit..."
           npm audit
-          echo "Running npm outdated..."
-          npm outdated
         working-directory: ./blog
 
       - name: Audit dependencies
