@@ -55,14 +55,17 @@ jobs:
 
       - name: Install dependencies
         run: |
-          echo "auditing the dependencies..."
-          echo "running npm install..."
+          echo "clearing npm cache..."
+          npm cache clean --force
+          echo "Updating npm..."
+          npm install -g npm
+          echo "Installing dependencies..."
           npm install
-          echo "creating a lock file..."
+          echo "Creating a lock file..."
           npm i --package-lock-only
-          echo "running npm audit..."
+          echo "Running npm audit..."
           npm audit
-          echo "running npm outdated..."
+          echo "Running npm outdated..."
           npm outdated
         working-directory: ./blog
 
