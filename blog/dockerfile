@@ -2,28 +2,18 @@
 FROM node:18 AS builder
 
 # Set the working directory in the container
-RUN ls
-RUN echo "vor WORKDIR /app"
 WORKDIR /app
 
 # Copy package.json and package-lock.json
-RUN ls
-RUN echo "vor copy package*.json ./"
 COPY package*.json ./
 
 # Install dependencies
-RUN ls
-RUN echo "vor npm install"
 RUN npm install
 
 # Copy the entire Next.js project to the container
-RUN ls
-RUN echo "vor COPY .."
 COPY . .
 
 # Build the Next.js application
-RUN ls
-RUN echo "vor npm run build"
 RUN npm run build
 
 # Stage 2: Create the production image
